@@ -17,6 +17,12 @@ plazo=function(VF,A,r) {
   return(n)  
 }
 
+#Tasa del periodo, conociendo valor futuro, número de pagos y monto de la anualidad.
+
+
+
+
+
 # Valor actual de una anualidad vencida
 valorActual=function(A,r,n) {
   VA=(A(((1+r)^n)-1))/(r((1+r)^n))
@@ -30,15 +36,14 @@ anualidadValorActual=function(Va,r,n) {
 }
 
 # Número de pagos dada el valor actual, tasa y anualidad
-plazo_por_valor_actual <- function(valor_actual, anualidad, tasa) {
-  n=log(anualidad / (anualidad - valor_actual * tasa)) / log(1 + tasa)
-  return(ceiling(n))  # Redondear hacia arriba
+plazoconvalorActual=function(VA,A,r) {
+  n=-log(1-((VA*r)/A))/log(1+r)
+  return(n) 
 }
 
 # Tasa del periodo dada el valor actual, plazo y anualidad
-tasa_por_valor_actual <- function(valor_actual, anualidad, n) {
-  f <- function(tasa) {
-    valor_actual - anualidad * (1 - (1 + tasa)^(-n)) / tasa
+tasaconvalorActual=function(VA,A,n) {
+    r= VA-A*(1-(1+r)^(-n))/r
   }
   return(uniroot(f, c(0, 1))$root)
 }
