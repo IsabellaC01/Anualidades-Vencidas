@@ -11,7 +11,7 @@ anualidad=1200
 tasaPeriodo=0.005
 nPeriodos=60
 # Calculamos el valor futuro:
-valorFuturo=valorFinalSimple(A=anualidad,r=tasaPeriodo,n=nPeriodos)
+valorFuturo=valorFuturo(A=anualidad,r=tasaPeriodo,n=nPeriodos)
 # Imprimimos el resultado:
 valorFuturo
 
