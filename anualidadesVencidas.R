@@ -1,6 +1,7 @@
+
 # Valor futuro de una anualidad vencida
-valorFuturo=function(A,r,n) {
-  return(A * ((1 + r)^n - 1) / r)
+valor_futuro_anualidad <- function(anualidad, tasa, n) {
+  return(anualidad * ((1 + tasa)^n - 1) / tasa)
 }
 
 # Anualidad dada el valor futuro
