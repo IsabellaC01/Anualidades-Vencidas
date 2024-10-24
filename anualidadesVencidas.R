@@ -18,10 +18,16 @@ plazo=function(VF,A,r) {
 }
 
 #Tasa del periodo, conociendo valor futuro, número de pagos y monto de la anualidad.
-
-
-
-
+while (tasa_superior - tasa_inferior > epsilon) {
+  VFsupuesto=A*((1+r)^(n)-1)/r
+  if (VFsupuesto < VF) {
+    tasa_inferior=r  
+  } else {
+    tasa_superior=r 
+  }
+  r=(tasa_inferior + tasa_superior)/2 
+}
+print(r)
 
 # Valor actual de una anualidad vencida
 valorActual=function(A,r,n) {
@@ -42,8 +48,13 @@ plazoconvalorActual=function(VA,A,r) {
 }
 
 # Tasa del periodo dada el valor actual, plazo y anualidad
-tasaconvalorActual=function(VA,A,n) {
-    r= VA-A*(1-(1+r)^(-n))/r
+while (tasa_superior - tasa_inferior > epsilon) {
+  VAprimero=A*((1+r)^(n)-1)/r
+  if (VAprimero < VF) {
+    tasa_inferior=r  
+  } else {
+    tasa_superior=r 
   }
-  return(uniroot(f, c(0, 1))$root)
+  r=(tasa_inferior + tasa_superior)/2 
 }
+print(r)
